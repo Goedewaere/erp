@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Doorverwijzen…</title>
+</head>
+<body>
+<script>
+  // OAuth-bounce voor Goedewaere ERP: Exact redirect hierheen (met ?code=…),
+  // wij sturen de browser door naar de lokale callback. Bezoekers zonder
+  // OAuth-parameters gaan direct naar de homepage en zien deze pagina nooit.
+  var q = location.search;
+  if (q.indexOf('code=') !== -1 || q.indexOf('error=') !== -1) {
+    location.replace('http://localhost:3001/api/exact/oauth/callback' + q);
+  } else {
+    location.replace('https://goedewaere.nl');
+  }
+</script>
+<p>Doorverwijzen…</p>
+</body>
+</html>
